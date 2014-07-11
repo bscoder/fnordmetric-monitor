@@ -18,7 +18,6 @@ Or install it yourself as:
 
 ## Usage
 
-    ``` ruby
     require 'fnordmetric'
     require 'fnordmetric/monitor'
     FnordMetric.namespace :myapp do
@@ -31,8 +30,6 @@ Or install it yourself as:
     ...
 
     FnordMetric::Monitor.new
-
-    ```
 
 
 ## Contributing
