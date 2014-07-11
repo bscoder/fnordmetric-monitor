@@ -1,4 +1,4 @@
-gauge_# Fnordmetric::GaugeMonitor
+# Fnordmetric::Monitor
 
 TODO: Write a gem description
 
@@ -18,7 +18,22 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    ``` ruby
+    require 'fnordmetric'
+    require 'fnordmetric/monitor'
+    FnordMetric.namespace :myapp do
+        contact_email "foralerts@mydomain.com", :groups => [:admins, :operators]
+
+        ...
+        gauge :myevents_per_minute, tick: 1.minute, monitor_min: 10, monitor_max: 60, monitor_recipient: :admins
+        ...
+    end
+    ...
+
+    FnordMetric::Monitor.new
+
+    ```
+
 
 ## Contributing
 
