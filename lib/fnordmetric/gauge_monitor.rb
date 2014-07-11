@@ -38,8 +38,11 @@ module FnordMetric::GaugeMonitor
       end
       message_collection.add_event recipients, {
         title: title,
+        status: monitor_isok?,
         min: @opts[:monitor_min],
         max: @opts[:monitor_max],
+        template_ok: @opts[:monitor_template_ok],
+        template_error: @opts[:monitor_template_error],
         current: prev_value,
         period_start: tick_at(Time.new.to_i - tick),
         period_end: tick_at(Time.new.to_i - tick) + tick

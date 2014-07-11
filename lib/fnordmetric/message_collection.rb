@@ -5,8 +5,14 @@ class MessageCollection
   end
 
   def add_event(group_ids, event_params)
-      message_text = "%{title} is %{current} (normal is [%{min}..%{max}])" % event_params
-      self.add_alert(group_ids, message_text)
+    message_template_ok = event_params[:template_ok] || "Restore %{title} now is %{current} (normal is [%{min}..%{max}])"
+    message_template_error = event_params[:template_error] || "Error %{title} now is %{current} (normal is [%{min}..%{max}])"
+    if event_params[:status] then
+      message_text =  message_template_ok % event_params
+    else
+      message_text =  message_template_error % event_params
+    end
+    self.add_alert(group_ids, message_text)
   end
 
   def add_alert(group_ids, message_text)
